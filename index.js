@@ -9,8 +9,9 @@ require('dotenv').config()
 connectDB();
 
 // MIDDLEWARES
-app.use(cors())
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // ROUTES
 app.use('/ping', pingRoutes);
