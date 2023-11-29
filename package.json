@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "prettify": "prettier --write 'src/**/*.js'"
   },
   "keywords": [],
   "author": "micael-jerry",
@@ -15,7 +16,8 @@
   },
   "devDependencies": {
     "eslint": "^8.54.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "prettier": "^3.1.0"
   },
   "dependencies": {
     "cors": "^2.8.5",
