@@ -7,9 +7,12 @@ const app = express();
 require('dotenv').config()
 connectDB();
 
+// MIDDLEWARES
+app.use(express.json());
+
 // ROUTES
 app.use('/ping', pingRoutes);
-app.use('api/user', userRoutes);
+app.use('/api/user', userRoutes);
 
 // SERVER
 app.listen(process.env.PORT || 8080, () => {
