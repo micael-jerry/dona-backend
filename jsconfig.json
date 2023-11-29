@@ -19,7 +19,7 @@
     "bower_components",
     ".npm",
     ".yarn",
-    ".yaml"
+    ".pnpm"
   ],
   "typeAcquisition": {
     "enable": true
