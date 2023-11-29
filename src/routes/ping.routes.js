@@ -1,7 +1,7 @@
 const express = require('express');
-const { ping } = require('../service/ping.service');
+const { pingController } = require('../controller/ping.controller');
 const router = express.Router();
 
-router.get('/', ping);
+router.get('/', pingController);
 
 module.exports.pingRoutes = router;
