@@ -24,23 +24,6 @@ const userSchema = mongoose.Schema({
         unique: true,
         min: 6,
         max: 1024
-    },
-    picture: {
-        type: String,
-        default: "./uploads/profil/random-user.png"
-    },
-    bio: {
-        type: String,
-        max: 1024,
-    },
-    followers: {
-        type: [String]
-    },
-    following: {
-        type: [String]
-    },
-    likes: {
-        type: [String]
     }
 }, {
     timestamps: true
