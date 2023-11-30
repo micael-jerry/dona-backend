@@ -1,7 +1,6 @@
 const { UserModel } = require('../model/user.model');
 
-module.exports.createUser = async obj => {
-  const { pseudo, email, password } = obj;
-  const user = await UserModel.create({ pseudo, email, password });
-  return user;
+module.exports.getAll = async () => {
+  const users = await UserModel.find();
+  return users;
 };

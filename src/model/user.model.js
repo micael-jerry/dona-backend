@@ -30,14 +30,14 @@ const userSchema = mongoose.Schema(
     bio: {
       type: String,
       max: 1000,
-    }
+    },
   },
   {
     timestamps: true,
   },
 );
 
-userSchema.pre('save', async function(next) {
+userSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt();
   this.password = bcrypt.hashSync(this.password, salt);
   next();

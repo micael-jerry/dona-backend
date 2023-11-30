@@ -1,7 +1,7 @@
-const { createUser } = require('../service/auth.service');
+const { getAll } = require('../service/user.service');
 
-module.exports.signUp = (req, res) => {
-  createUser(req.body)
+module.exports.getAllUsers = (req, res) => {
+  getAll()
     .then(r => res.status(200).json(r))
     .catch(e => {
       console.log(e);
