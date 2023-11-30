@@ -24,8 +24,12 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true,
       min: 6,
-      max: 1024,
+      max: 100,
     },
+    bio: {
+      type: String,
+      max: 1000,
+    }
   },
   {
     timestamps: true,
