@@ -43,11 +43,11 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 
 ## Endpoints
 
-- **GET /utilisateurs :** Récupère la liste des utilisateurs.
-- **GET /utilisateurs/:id :** Récupère les informations d'un utilisateur spécifique.
-- **POST /utilisateurs :** Crée un nouvel utilisateur.
-- **PUT /utilisateurs/:id :** Met à jour les informations d'un utilisateur.
-- **DELETE /utilisateurs/:id :** Supprime un utilisateur.
+- **GET /api/user :** Récupère la liste des utilisateurs.
+- **GET /api/:id :** Récupère les informations d'un utilisateur spécifique.
+- **POST /api/user/register :** Crée un nouvel utilisateur.
+- **PUT /api/user/:id :** Met à jour les informations d'un utilisateur.
+- **DELETE /api/user/:id :** Supprime un utilisateur.
 
 (Reproduisez ces sections pour les publications, les commentaires, etc.)
 
