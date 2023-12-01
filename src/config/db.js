@@ -6,7 +6,7 @@ const connectDB = async () => {
 			bufferCommands: true,
 			autoIndex: false,
 		})
-		.then(res => console.log(`DATABASE connection SUCCESSFULY`))
+		.then(() => console.log(`DATABASE connection SUCCESSFULY`))
 		.catch(err => {
 			console.log(err);
 			process.exit();
