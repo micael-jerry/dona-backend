@@ -4,7 +4,7 @@ const connectDB = async () => {
 	await mongoose
 		.connect(process.env.DATABASE_URL, {
 			bufferCommands: true,
-			autoIndex: true,  // use the index to check data uniqueness
+			autoIndex: true, // use the index to check data uniqueness
 		})
 		.then(() => console.log(`DATABASE connection SUCCESSFULY`))
 		.catch(err => {
