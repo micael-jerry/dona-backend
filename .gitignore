@@ -3,9 +3,7 @@ node_modules
 
 # LOCK FILE
 pnpm-lock.yaml
+package-lock.json
 
 # Environnement
 .env
-
-# vs code
-.vscode
