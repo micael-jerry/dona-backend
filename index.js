@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { connectDB } = require('./src/config/db');
-const { pingRoutes } = require('./src/routes/ping.routes');
+const { helloWorldRouter } = require('./src/routes/hello.routes');
 const { userRoutes } = require('./src/routes/user.routes');
 
 const app = express();
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTES
-app.use('/ping', pingRoutes);
+app.use('/helloworld', helloWorldRouter);
 app.use('/api/user', userRoutes);
 
 // SERVER

@@ -35,7 +35,7 @@ const userSchema = mongoose.Schema(
 	},
 );
 
-userSchema.pre('save', async function (next) {
+userSchema.pre('save', async (next) => {
 	const salt = await bcrypt.genSalt();
 	this.password = bcrypt.hashSync(this.password, salt);
 	next();
