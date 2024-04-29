@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { UserModel } = require('../model/user.model');
 
 module.exports.createUser = async obj => {
@@ -14,7 +15,7 @@ module.exports.loginUser = async obj => {
 		if (bcrypt.compareSync(password, foundUser.password)) {
 			return {
 				userId: foundUser._id,
-				token: 'TOKEN',
+				token: jwt.sign({userId: foundUser._id}, process.env.JWT_SECRET_KEY),
 			}
 		}
 		return Promise.reject(`Invalid password for this user: ${email}`)
