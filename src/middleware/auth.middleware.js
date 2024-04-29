@@ -12,13 +12,13 @@ module.exports.verifyAuth = (req, res, next) => {
 			} else {
 				req.user = {
 					userId: decodedToken.userId,
-				}
+				};
 				next();
 			}
-		})
+		});
 	} catch (error) {
 		res.status(401).json({
 			message: 'Unauthorized',
-		})
+		});
 	}
-}
+};

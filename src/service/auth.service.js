@@ -18,7 +18,9 @@ module.exports.loginUser = async obj => {
 				token: jwt.sign({ userId: foundUser._id }, process.env.JWT_SECRET_KEY),
 			};
 		}
-		return Promise.reject({ message: `Invalid password for this user: ${email}` });
+		return Promise.reject({
+			message: `Invalid password for this user: ${email}`,
+		});
 	}
 	return Promise.reject({ message: `User not found` });
 };
