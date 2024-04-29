@@ -1,2 +1,2 @@
 error response
-body check and validator
+response model
