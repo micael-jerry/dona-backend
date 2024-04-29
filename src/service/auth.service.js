@@ -11,7 +11,7 @@ module.exports.loginUser = async obj => {
 	const { email, password } = obj;
 	const foundUser = await UserModel.findOne({ email });
 	if (foundUser) {
-		if (bcrypt.compareSync(foundUser.password, password)) {
+		if (bcrypt.compareSync(password, foundUser.password)) {
 			return {
 				userId: foundUser._id,
 				token: 'TOKEN',
