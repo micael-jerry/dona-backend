@@ -16,4 +16,4 @@ module.exports.login = (req, res) => {
 			console.log(e);
 			res.status(400).json(e);
 		});
-}
+};
