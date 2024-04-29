@@ -30,7 +30,7 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Check code formatting
+    - name: Check code with eslint
       run: npm run check
 
     - name: Build app
