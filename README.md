@@ -49,15 +49,13 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 - **PUT /api/user/:id :** Met à jour les informations d'un utilisateur.
 - **DELETE /api/user/:id :** Supprime un utilisateur.
 
-(Reproduisez ces sections pour les publications, les commentaires, etc.)
-
 ## Contributions
 
 Les contributions sont les bienvenues ! Avant de contribuer, assurez-vous de discuter des modifications que vous souhaitez apporter.
 
 ## Auteurs
 
-- @micael-jerry
+- [@micael-jerry](https://github.com/micael-jerry)
 
 ## Licence
 
