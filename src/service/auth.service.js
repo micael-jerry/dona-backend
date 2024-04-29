@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { UserModel } = require('../model/user.model');
+const { httpErrorObject } = require('../error/error');
+const { StatusCodes } = require('http-status-codes');
 
 module.exports.createUser = async obj => {
 	const { pseudo, email, password } = obj;
@@ -18,9 +20,14 @@ module.exports.loginUser = async obj => {
 				token: jwt.sign({ userId: foundUser._id }, process.env.JWT_SECRET_KEY),
 			};
 		}
-		return Promise.reject({
-			message: `Invalid password for this user: ${email}`,
-		});
+		return Promise.reject(
+			httpErrorObject(
+				`Invalid password for this user: ${email}`,
+				StatusCodes.UNAUTHORIZED,
+			),
+		);
 	}
-	return Promise.reject({ message: `User not found` });
+	return Promise.reject(
+		httpErrorObject(`User not found`, StatusCodes.UNAUTHORIZED),
+	);
 };

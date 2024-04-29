@@ -4,7 +4,9 @@ const {
 	getUserInfo,
 	updateUser,
 } = require('../controller/user.controller');
-const { updateUserValidator } = require('../middleware/validator/user.validator');
+const {
+	updateUserValidator,
+} = require('../middleware/validator/user.validator');
 const router = express.Router();
 
 // User operation
