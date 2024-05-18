@@ -2,6 +2,8 @@
 
 [![Continuous Integration](https://github.com/SignCraft2024/signcraft/actions/workflows/CI.yml/badge.svg)](https://github.com/micael-jerry/my-social-media-backend/blob/dev/.github/workflows/ci.yml)
 
+[![Test coverage with codevov](https://codecov.io/gh/micael-jerry/my-social-media-backend/branch/dev/graph/badge.svg?token=5E63UJ11NG)](https://codecov.io/gh/micael-jerry/my-social-media-backend)
+
 ## Description
 
 Bienvenue dans my-social-media-backend ! Il s'agit d'une API RESTful développée pour alimenter un réseau social. Cette API offre des fonctionnalités essentielles pour la gestion des utilisateurs, des publications, des commentaires, etc.
