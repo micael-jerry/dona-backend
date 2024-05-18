@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "node index.js",
 		"dev": "nodemon index.js",
-		"test": "jest --coverage --forceExit",
+		"test": "jest --coverage",
 		"prettify": "prettier --write 'src/**/*.js'",
 		"check": "eslint src/**/*"
 	},
