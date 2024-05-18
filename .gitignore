@@ -3,3 +3,6 @@ node_modules
 
 # Environnement
 .env
+
+# Test coverage report
+coverage
