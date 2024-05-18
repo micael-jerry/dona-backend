@@ -35,11 +35,14 @@ jobs:
     
     - name: Run tests
       run: npm run test
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
-      # env:
-      #   token: ${{ secrets.CODECOV_TOKEN }}
+      env:
+        token: ${{ secrets.CODECOV_TOKEN }}
 
     - name: Build app
       run: npm run build --if-present
