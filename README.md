@@ -38,6 +38,7 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 
 - PORT= < port ou l'app va demarrer >
 - DATABASE_URL= < url de la base de donnee mongodb >
+- JWT_SECRET_KEY= < jwt sign and decode key >
 
 ## Démarrage
 
