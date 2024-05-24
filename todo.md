@@ -7,5 +7,3 @@
 - response model
 
 ## Other
-
-- STOP database connection and server listening after testing --detectOpenHandles (jest)

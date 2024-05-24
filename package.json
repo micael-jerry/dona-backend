@@ -8,7 +8,8 @@
 		"dev": "nodemon index.js",
 		"migrate:up": "migrate-mongo up",
 		"migrate:down": "migrate-mongo down",
-		"test": "cross-env NODE_ENV=test jest --coverage --forceExit",
+		"test": "cross-env NODE_ENV=test jest --coverage",
+		"test:detectOpenHandles": "cross-env NODE_ENV=test jest --detectOpenHandles",
 		"prettify": "prettier --write 'src/**/*.js'",
 		"check": "eslint src/**/*"
 	},
