@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { UserModel } = require('../model/user.model');
-const { httpErrorObject } = require('../error/error');
 const { StatusCodes } = require('http-status-codes');
+const { CustomError } = require('../error/error.custom.model');
 
 module.exports.createUser = async obj => {
 	const { pseudo, email, password } = obj;
@@ -16,18 +16,16 @@ module.exports.loginUser = async obj => {
 	if (foundUser) {
 		if (bcrypt.compareSync(password, foundUser.password)) {
 			return {
-				userId: foundUser._id,
 				token: jwt.sign({ userId: foundUser._id }, process.env.JWT_SECRET_KEY),
 			};
 		}
-		return Promise.reject(
-			httpErrorObject(
-				`Invalid password for this user: ${email}`,
-				StatusCodes.UNAUTHORIZED,
-			),
-		);
+		throw new CustomError({
+			message: `Invalid password for this user: ${email}`,
+			status: StatusCodes.UNAUTHORIZED,
+		})
 	}
-	return Promise.reject(
-		httpErrorObject(`User not found`, StatusCodes.UNAUTHORIZED),
-	);
+	throw new CustomError({
+		message: `User not found`,
+		status: StatusCodes.UNAUTHORIZED
+	});
 };

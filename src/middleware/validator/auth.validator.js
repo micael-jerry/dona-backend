@@ -1,6 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 const Joi = require('joi');
-const { httpErrorObject } = require('../../error/error');
+const { CustomError } = require('../../error/error.custom.model');
 
 const signUpValidatorSchema = Joi.object({
 	pseudo: Joi.string().min(3).max(50).required(),
@@ -19,13 +19,11 @@ module.exports.signUpBodyValidator = (req, res, next) => {
 	if (error) {
 		res
 			.status(StatusCodes.BAD_REQUEST)
-			.json(
-				httpErrorObject(
-					error.details[0].message,
-					StatusCodes.BAD_REQUEST,
-					error,
-				),
-			);
+			.json(new CustomError({
+				message: error.details[0].message,
+				status: StatusCodes.BAD_REQUEST,
+				stack: error,
+			}));
 	} else {
 		next();
 	}
@@ -36,13 +34,11 @@ module.exports.loginBodyValidator = (req, res, next) => {
 	if (error) {
 		res
 			.status(StatusCodes.BAD_REQUEST)
-			.json(
-				httpErrorObject(
-					error.details[0].message,
-					StatusCodes.BAD_REQUEST,
-					error,
-				),
-			);
+			.json(new CustomError({
+				message: error.details[0].message,
+				status: StatusCodes.BAD_REQUEST,
+				stack: error,
+			}));
 	} else {
 		next();
 	}
