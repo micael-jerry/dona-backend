@@ -14,4 +14,15 @@ const connectDB = async () => {
 		});
 };
 
+const disconnectDB = async () => {
+	await mongoose
+    .disconnect()
+    .then(() => console.log(`DATABASE connection CLOSED`))
+    .catch(err => {
+      console.log(err);
+      process.exit();
+    });
+}
+
 module.exports.connectDB = connectDB;
+module.exports.disconnectDB = disconnectDB;
