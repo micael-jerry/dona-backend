@@ -1,14 +1,10 @@
-const { describe, it, expect, afterAll } = require('@jest/globals');
+const { describe, it, expect } = require('@jest/globals');
 const request = require('supertest');
 const app = require('../app');
 const { AUTH_LOGIN_PATH } = require('./conf/path');
 const { USER_ONE_EMAIL, USER_ONE_PASSWORD } = require('./conf/test.utils');
 
 describe(`POST ${AUTH_LOGIN_PATH}`, () => {
-	afterAll(() => {
-		console.log("VITA");
-	})
-
 	it('should return token', async () => {
 		const res = await request(app)
 			.post(`${AUTH_LOGIN_PATH}`)

@@ -17,13 +17,13 @@ const loginValidatorSchema = Joi.object({
 module.exports.signUpBodyValidator = (req, res, next) => {
 	const { error } = signUpValidatorSchema.validate(req.body);
 	if (error) {
-		res
-			.status(StatusCodes.BAD_REQUEST)
-			.json(new CustomError({
+		res.status(StatusCodes.BAD_REQUEST).json(
+			new CustomError({
 				message: error.details[0].message,
 				status: StatusCodes.BAD_REQUEST,
 				stack: error,
-			}));
+			}),
+		);
 	} else {
 		next();
 	}
@@ -32,13 +32,13 @@ module.exports.signUpBodyValidator = (req, res, next) => {
 module.exports.loginBodyValidator = (req, res, next) => {
 	const { error } = loginValidatorSchema.validate(req.body);
 	if (error) {
-		res
-			.status(StatusCodes.BAD_REQUEST)
-			.json(new CustomError({
+		res.status(StatusCodes.BAD_REQUEST).json(
+			new CustomError({
 				message: error.details[0].message,
 				status: StatusCodes.BAD_REQUEST,
 				stack: error,
-			}));
+			}),
+		);
 	} else {
 		next();
 	}
