@@ -1,2 +1,0 @@
-error response
-response model
