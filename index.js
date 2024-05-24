@@ -20,8 +20,9 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 
 // SERVER
-app.listen(process.env.PORT || 8080, () => {
+const server = app.listen(process.env.PORT || 8080, () => {
     console.log(`Server started on port ${process.env.PORT || 8080}`);
 });
 
-module.exports = app;
+module.exports.app = app;
+module.exports.server = server;

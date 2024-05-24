@@ -42,6 +42,9 @@
 		"testEnvironment": "node",
 		"coveragePathIgnorePatterns": [
 			"/node_modules/"
+		],
+		"testPathIgnorePatterns": [
+			"/__tests__/conf/"
 		]
 	}
 }
