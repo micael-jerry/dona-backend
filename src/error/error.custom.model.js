@@ -5,10 +5,10 @@ class CustomError extends Error {
 		super(errorObject.message);
 		this.name = this.constructor.name;
 		this.message = errorObject.message;
-		this.status = errorObject.status && StatusCodes.INTERNAL_SERVER_ERROR;
+		this.status = errorObject.status || StatusCodes.INTERNAL_SERVER_ERROR;
 		this.reason = getReasonPhrase(this.status);
 		this.stack =
-			errorObject.stack && Error.captureStackTrace(this, this.constructor);
+			errorObject.stack || Error.captureStackTrace(this, this.constructor);
 	}
 }
 
