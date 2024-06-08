@@ -8,7 +8,7 @@ const connectDB = async () => {
 			autoIndex: true, // use the index to check data uniqueness
 		})
 		.then(() => console.log(`DATABASE connection SUCCESSFULY`))
-		.catch((err) => {
+		.catch(err => {
 			throw err;
 		});
 };

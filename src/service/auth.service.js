@@ -5,9 +5,8 @@ const { StatusCodes } = require('http-status-codes');
 const { CustomError } = require('../error/error.custom.model');
 
 module.exports.createUser = async obj => {
-	const { pseudo, email, password } = obj;
-	const user = await UserModel.create({ pseudo, email, password });
-	return user;
+	const { pseudo, email, password, bio } = obj;
+	return await UserModel.create({ pseudo, email, password, bio });
 };
 
 module.exports.loginUser = async obj => {
