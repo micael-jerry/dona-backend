@@ -2,8 +2,6 @@
 
 ## Authentification
 
-- Request body validator
-- error response
-- response model
+- Create a middleware that checks every request on every route for authorization.
 
 ## Other
