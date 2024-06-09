@@ -24,7 +24,7 @@ describe(`Test login and register`, () => {
 				.post(AUTH_LOGIN_PATH)
 				.send({ email: USER_ONE_EMAIL, password: USER_ONE_PASSWORD})
 				.expect('Content-Type', /json/)
-				.expect(200);
+				.expect(StatusCodes.OK);
 			expect(res.statusCode).toBe(StatusCodes.OK);
 			expect(res.body.token).not.toBeNull()
 		})
@@ -40,6 +40,26 @@ describe(`Test login and register`, () => {
 			expect(res.body.pseudo).toEqual(userTestCreate.pseudo)
 			expect(res.body.bio).toEqual(userTestCreate.bio)
 		});
+
+	it('should return Incorrect email', async () => {
+		const res = await request(app)
+			.post(AUTH_LOGIN_PATH)
+			.send({ email: 'email@email.com', password: 'password'})
+			.expect('Content-Type', /json/)
+			.expect(StatusCodes.UNAUTHORIZED);
+		expect(res.statusCode).toBe(StatusCodes.UNAUTHORIZED);
+		expect(res.body.message).toEqual('Invalid email')
+	})
+
+	it('should return Invalid password', async () => {
+		const res = await request(app)
+			.post(AUTH_LOGIN_PATH)
+			.send({ email: USER_ONE_EMAIL, password: 'password'})
+			.expect('Content-Type', /json/)
+			.expect(StatusCodes.UNAUTHORIZED);
+		expect(res.statusCode).toBe(StatusCodes.UNAUTHORIZED);
+		expect(res.body.message).toEqual('Invalid password')
+	})
 
 	afterAll(async () => {
 		await disconnectDB();

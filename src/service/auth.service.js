@@ -19,12 +19,12 @@ module.exports.loginUser = async obj => {
 			};
 		}
 		throw new CustomError({
-			message: `Invalid password for this user: ${email}`,
+			message: `Invalid password`,
 			status: StatusCodes.UNAUTHORIZED,
 		});
 	}
 	throw new CustomError({
-		message: `User not found`,
+		message: `Invalid email`,
 		status: StatusCodes.UNAUTHORIZED,
 	});
 };

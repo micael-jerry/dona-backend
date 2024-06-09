@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTES
-app.use('/helloworld', helloWorldRouter);
+app.use('/api/helloworld', helloWorldRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 
