@@ -3,6 +3,7 @@ const cors = require('cors');
 const { helloWorldRouter } = require('./src/routes/hello.routes');
 const { userRouter } = require('./src/routes/user.routes');
 const { authRouter } = require('./src/routes/auth.routes');
+const { notFoundController } = require('./src/controller/not.found.controller');
 
 const app = express();
 
@@ -15,5 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/helloworld', helloWorldRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
+
+// OTHER ROUTES
+app.use(notFoundController);
 
 module.exports = app;

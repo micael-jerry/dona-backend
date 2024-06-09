@@ -48,7 +48,7 @@ describe(`Test login and register`, () => {
 			.expect('Content-Type', /json/)
 			.expect(StatusCodes.UNAUTHORIZED);
 		expect(res.statusCode).toBe(StatusCodes.UNAUTHORIZED);
-		expect(res.body.message).toEqual('Invalid email')
+		expect(res.body.error_message).toEqual('Invalid email')
 	})
 
 	it('should return Invalid password', async () => {
@@ -58,7 +58,7 @@ describe(`Test login and register`, () => {
 			.expect('Content-Type', /json/)
 			.expect(StatusCodes.UNAUTHORIZED);
 		expect(res.statusCode).toBe(StatusCodes.UNAUTHORIZED);
-		expect(res.body.message).toEqual('Invalid password')
+		expect(res.body.error_message).toEqual('Invalid password')
 	})
 
 	afterAll(async () => {
