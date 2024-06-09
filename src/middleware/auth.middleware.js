@@ -8,10 +8,12 @@ module.exports.verifyAuth = (req, res, next) => {
 		const token = bearerToken.split(' ')[1];
 		jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decodedToken) => {
 			if (err) {
-				res.status(StatusCodes.UNAUTHORIZED).json(new CustomError({
-					message: 'Unauthorized',
-					status: StatusCodes.UNAUTHORIZED
-				}));
+				res.status(StatusCodes.UNAUTHORIZED).json(
+					new CustomError({
+						message: 'Unauthorized',
+						status: StatusCodes.UNAUTHORIZED,
+					}),
+				);
 			} else {
 				req.user = {
 					userId: decodedToken.userId,
@@ -21,9 +23,11 @@ module.exports.verifyAuth = (req, res, next) => {
 		});
 	} catch (error) {
 		console.error(error);
-		res.status(StatusCodes.UNAUTHORIZED).json(new CustomError({
-			message: 'Unauthorized',
-			status: StatusCodes.UNAUTHORIZED
-		}));
+		res.status(StatusCodes.UNAUTHORIZED).json(
+			new CustomError({
+				message: 'Unauthorized',
+				status: StatusCodes.UNAUTHORIZED,
+			}),
+		);
 	}
 };

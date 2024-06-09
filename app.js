@@ -1,8 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { helloWorldRouter } = require('./src/routes/hello.routes');
-const { userRouter } = require('./src/routes/user.routes');
-const { authRouter } = require('./src/routes/auth.routes');
+const { apiRouter } = require('./src/routes/api.routes');
 const { notFoundController } = require('./src/controller/not.found.controller');
 
 const app = express();
@@ -13,9 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTES
-app.use('/api/helloworld', helloWorldRouter);
-app.use('/api/auth', authRouter);
-app.use('/api/user', userRouter);
+app.use('/api', apiRouter);
 
 // OTHER ROUTES
 app.use(notFoundController);
