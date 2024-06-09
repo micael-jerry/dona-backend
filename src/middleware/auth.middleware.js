@@ -1,4 +1,6 @@
 const jwt = require('jsonwebtoken');
+const { StatusCodes } = require('http-status-codes');
+const { CustomError } = require('../error/error.custom.model');
 
 module.exports.verifyAuth = (req, res, next) => {
 	const bearerToken = req.headers.authorization;
@@ -6,9 +8,10 @@ module.exports.verifyAuth = (req, res, next) => {
 		const token = bearerToken.split(' ')[1];
 		jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decodedToken) => {
 			if (err) {
-				res.status(401).json({
+				res.status(StatusCodes.UNAUTHORIZED).json(new CustomError({
 					message: 'Unauthorized',
-				});
+					status: StatusCodes.UNAUTHORIZED
+				}));
 			} else {
 				req.user = {
 					userId: decodedToken.userId,
@@ -17,8 +20,10 @@ module.exports.verifyAuth = (req, res, next) => {
 			}
 		});
 	} catch (error) {
-		res.status(401).json({
+		console.error(error);
+		res.status(StatusCodes.UNAUTHORIZED).json(new CustomError({
 			message: 'Unauthorized',
-		});
+			status: StatusCodes.UNAUTHORIZED
+		}));
 	}
 };
