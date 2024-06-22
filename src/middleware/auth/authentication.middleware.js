@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 const { StatusCodes } = require('http-status-codes');
-const { CustomError } = require('../error/error.custom.model');
+const { CustomError } = require('../../error/error.custom.model');
 
-module.exports.verifyAuth = (req, res, next) => {
+module.exports.authentication = (req, res, next) => {
 	const bearerToken = req.headers.authorization;
 	try {
 		const token = bearerToken.split(' ')[1];
@@ -16,7 +16,7 @@ module.exports.verifyAuth = (req, res, next) => {
 				);
 			} else {
 				req.user = {
-					userId: decodedToken.userId,
+					user_id: decodedToken.user_id,
 				};
 				next();
 			}

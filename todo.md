@@ -1,7 +1,13 @@
-# Todo
+# Social Media
 
-## Authentification
+## Auth
+
+### Authentification
 
 - Create a middleware that checks every request on every route for authorization.
 
-## Other
+### Authorization
+
+## Posts
+
+> <https://learn.microsoft.com/fr-fr/azure/cosmos-db/social-media-apps>

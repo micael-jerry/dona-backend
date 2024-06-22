@@ -11,7 +11,7 @@ module.exports.getAllUsers = (req, res) => {
 };
 
 module.exports.getUserInfo = (req, res) => {
-	getById(req.params.id)
+	getById(req.params.user_id)
 		.then(r => res.status(StatusCodes.OK).json(r))
 		.catch(e => {
 			console.log(e);
@@ -20,7 +20,7 @@ module.exports.getUserInfo = (req, res) => {
 };
 
 module.exports.updateUser = (req, res) => {
-	update(req.params.id, req.body)
+	update(req.params.user_id, req.body)
 		.then(r => res.status(StatusCodes.OK).json(r))
 		.catch(e => {
 			console.log(e);
