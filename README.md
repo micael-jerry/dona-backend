@@ -28,23 +28,50 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 
 ## Installation
 
-1. Clonez le dépôt : `git clone git@github.com:micael-jerry/my-social-media-backend.git`
-2. Accédez au répertoire du projet : `cd my-social-media-backend`
-3. Installez les dépendances : `npm install`
+### 1. Clonez le dépôt
+
+```bash
+git clone git@github.com:micael-jerry/my-social-media-backend.git
+```
+
+### 2. Accédez au répertoire du projet
+
+```bash
+cd my-social-media-backend
+```
+
+### 3. Installez les dépendances
+
+```bash
+npm install
+```
 
 ## Configuration
 
 1. Créez un fichier `.env` à la racine du projet et configurez les variables d'environnement nécessaires:
 
-- PORT= < port ou l'app va demarrer >
-- DATABASE_URL= < url de la base de donnee mongodb >
-- JWT_SECRET_KEY= < jwt sign and decode key >
+```bash
+PORT= <port>
+DATABASE_URL= <url>
+DATABASE_NAME= <name>
+JWT_SECRET_KEY= <key>
+```
 
 ## Démarrage
 
-1. Lancez l'application : `npm start`
-2. Lancez l'application en mode developpement: `npm run dev`
-3. L'API sera accessible à l'adresse : `http://localhost:8080` (ou tout autre port que vous avez configuré)
+### 1. Lancez l'application
+
+```bash
+npm start
+```
+
+### 2. Lancez l'application en mode developpement
+
+```bash
+npm run dev
+```
+
+> L'API sera accessible à l'adresse : `http://localhost:8080` (ou tout autre port que vous avez configuré)
 
 ## Endpoints
 
@@ -53,7 +80,6 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 - **POST /api/auth/login :** Se connecter
 - **POST /api/auth/register :** Crée un nouvel utilisateur.
 - **PUT /api/users/:id :** Met à jour les informations d'un utilisateur.
-- **DELETE /api/users/:id :** Supprime un utilisateur.
 
 ## Contributions
 
