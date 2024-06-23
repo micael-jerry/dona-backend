@@ -1,7 +1,7 @@
 const { describe, it, expect, beforeAll, afterAll } = require('@jest/globals');
 const request = require('supertest');
 const app = require('../app');
-const { AUTH_LOGIN_PATH, AUTH_SIGNUP_PATH } = require('./conf/path');
+const { AUTH_LOGIN_PATH, AUTH_SIGNUP_PATH, AUTH_WHOAMI_PATH } = require('./conf/path');
 const { USER_ONE_EMAIL, USER_ONE_PASSWORD } = require('./conf/test.utils');
 const { connectDB, disconnectDB } = require('../src/config/db');
 const { StatusCodes } = require('http-status-codes');
@@ -19,6 +19,7 @@ describe(`Test login and register`, () => {
 	beforeAll(async () => {
 		await connectDB();
 	});
+
 	it('should return token', async () => {
 		const res = await request(app)
 			.post(AUTH_LOGIN_PATH)
@@ -59,6 +60,21 @@ describe(`Test login and register`, () => {
 			.expect(StatusCodes.UNAUTHORIZED);
 		expect(res.statusCode).toBe(StatusCodes.UNAUTHORIZED);
 		expect(res.body.error_message).toEqual('Invalid password');
+	});
+
+	it('should return logged user information', async () => {
+		const logRes = await request(app)
+			.post(AUTH_LOGIN_PATH)
+			.send({ email: USER_ONE_EMAIL, password: USER_ONE_PASSWORD })
+			.expect(StatusCodes.OK);
+
+		const res = await request(app)
+			.get(AUTH_WHOAMI_PATH)
+			.set({ Authorization: `Bearer ${logRes.body.token}` })
+			.expect('Content-Type', /json/)
+			.expect(StatusCodes.OK);
+		expect(res.statusCode).toBe(StatusCodes.OK);
+		expect(res.body.email).toBe(USER_ONE_EMAIL);
 	});
 
 	afterAll(async () => {

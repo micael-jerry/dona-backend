@@ -10,7 +10,7 @@ module.exports.getAllUsers = (req, res) => {
 		});
 };
 
-module.exports.getUserInfo = (req, res) => {
+module.exports.getUserById = (req, res) => {
 	getById(req.params.user_id)
 		.then(r => res.status(StatusCodes.OK).json(r))
 		.catch(e => {

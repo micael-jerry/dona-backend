@@ -1,7 +1,7 @@
 const { UserModel } = require('../model/user.model');
 
 module.exports.getAll = async () => {
-	return await UserModel.find();
+	return await UserModel.find({}, { password: 0 });
 };
 
 module.exports.getById = async id => {
