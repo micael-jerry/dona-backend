@@ -6,6 +6,7 @@ module.exports.signUp = (req, res) => {
 	createUser(req.body)
 		.then(r => res.status(StatusCodes.CREATED).json(r))
 		.catch(e => {
+			console.log(e);
 			res.status(StatusCodes.UNAUTHORIZED).json(e);
 		});
 };
