@@ -1,4 +1,4 @@
-const { describe, it, expect, afterAll } = require('@jest/globals');
+const { describe, it, expect, } = require('@jest/globals');
 const request = require('supertest');
 const app = require('../app');
 const { HELLO_WORLD_PATH } = require('./conf/path');
