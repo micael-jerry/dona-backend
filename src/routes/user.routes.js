@@ -6,7 +6,7 @@ const { himself } = require('../middleware/auth/authorization.middleware');
 const router = express.Router();
 
 // User operation
-router.get('/', getAllUsers);
+router.get('/', authentication, getAllUsers);
 router.get('/:user_id', authentication, getUserById);
 router.put('/:user_id', authentication, himself, updateUserValidator, updateUser);
 

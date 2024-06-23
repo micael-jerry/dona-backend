@@ -13,6 +13,21 @@ describe(`Test /users`, () => {
 		await connectDB();
 	});
 
+	it('should return users list', async () => {
+		const logRes = await request(app)
+			.post(AUTH_LOGIN_PATH)
+			.send({ email: USER_ONE_EMAIL, password: USER_ONE_PASSWORD })
+			.expect(StatusCodes.OK);
+
+		const res = await request(app)
+			.get(`${USERS_PATH}`)
+			.set({ Authorization: `Bearer ${logRes.body.token}` })
+			.expect('Content-Type', /json/)
+			.expect(StatusCodes.OK);
+		expect(res.statusCode).toBe(StatusCodes.OK);
+		expect(res.body.length >= 2).toBe(true);
+	});
+
 	it('should return on user by id', async () => {
 		const logRes = await request(app)
 			.post(AUTH_LOGIN_PATH)
