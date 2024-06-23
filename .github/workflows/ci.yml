@@ -33,6 +33,13 @@ jobs:
     - name: Check code with eslint
       run: npm run check
 
+    - name: Migration DOWN
+      run: npm run migrate:down
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+        JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+
     - name: Migration UP
       run: npm run migrate:up
       env:
