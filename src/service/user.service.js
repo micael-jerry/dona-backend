@@ -5,7 +5,7 @@ module.exports.getAll = async () => {
 };
 
 module.exports.getById = async id => {
-	const user = await UserModel.findById(id, { password: 0});
+	const user = await UserModel.findById(id, { password: 0 });
 	return user;
 };
 

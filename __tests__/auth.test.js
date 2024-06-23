@@ -6,62 +6,62 @@ const { USER_ONE_EMAIL, USER_ONE_PASSWORD } = require('./conf/test.utils');
 const { connectDB, disconnectDB } = require('../src/config/db');
 const { StatusCodes } = require('http-status-codes');
 
-require('dotenv').config()
+require('dotenv').config();
 
 const userTestCreate = {
 	pseudo: 'user_test_create',
 	email: 'user.test.create@example.com',
 	password: 'userTestCreate',
 	bio: 'user test create',
-}
+};
 
 describe(`Test login and register`, () => {
 	beforeAll(async () => {
 		await connectDB();
-	})
-		it('should return token', async () => {
-			const res = await request(app)
-				.post(AUTH_LOGIN_PATH)
-				.send({ email: USER_ONE_EMAIL, password: USER_ONE_PASSWORD})
-				.expect('Content-Type', /json/)
-				.expect(StatusCodes.OK);
-			expect(res.statusCode).toBe(StatusCodes.OK);
-			expect(res.body.token).not.toBeNull()
-		})
+	});
+	it('should return token', async () => {
+		const res = await request(app)
+			.post(AUTH_LOGIN_PATH)
+			.send({ email: USER_ONE_EMAIL, password: USER_ONE_PASSWORD })
+			.expect('Content-Type', /json/)
+			.expect(StatusCodes.OK);
+		expect(res.statusCode).toBe(StatusCodes.OK);
+		expect(res.body.token).not.toBeNull();
+	});
 
-		it('should return new user created', async () => {
-			const res = await request(app)
-				.post(AUTH_SIGNUP_PATH)
-				.send(userTestCreate)
-				.expect('Content-Type', /json/)
-				.expect(StatusCodes.CREATED);
-			expect(res.statusCode).toBe(StatusCodes.CREATED);
-			expect(res.body.email).toEqual(userTestCreate.email)
-			expect(res.body.pseudo).toEqual(userTestCreate.pseudo)
-			expect(res.body.bio).toEqual(userTestCreate.bio)
-		});
+	it('should return new user created', async () => {
+		const res = await request(app)
+			.post(AUTH_SIGNUP_PATH)
+			.send(userTestCreate)
+			.expect('Content-Type', /json/)
+			.expect(StatusCodes.CREATED);
+		expect(res.statusCode).toBe(StatusCodes.CREATED);
+		expect(res.body.email).toEqual(userTestCreate.email);
+		expect(res.body.pseudo).toEqual(userTestCreate.pseudo);
+		expect(res.body.bio).toEqual(userTestCreate.bio);
+	});
 
 	it('should return Incorrect email', async () => {
 		const res = await request(app)
 			.post(AUTH_LOGIN_PATH)
-			.send({ email: 'email@email.com', password: 'password'})
+			.send({ email: 'email@email.com', password: 'password' })
 			.expect('Content-Type', /json/)
 			.expect(StatusCodes.UNAUTHORIZED);
 		expect(res.statusCode).toBe(StatusCodes.UNAUTHORIZED);
-		expect(res.body.error_message).toEqual('Invalid email')
-	})
+		expect(res.body.error_message).toEqual('Invalid email');
+	});
 
 	it('should return Invalid password', async () => {
 		const res = await request(app)
 			.post(AUTH_LOGIN_PATH)
-			.send({ email: USER_ONE_EMAIL, password: 'password'})
+			.send({ email: USER_ONE_EMAIL, password: 'password' })
 			.expect('Content-Type', /json/)
 			.expect(StatusCodes.UNAUTHORIZED);
 		expect(res.statusCode).toBe(StatusCodes.UNAUTHORIZED);
-		expect(res.body.error_message).toEqual('Invalid password')
-	})
+		expect(res.body.error_message).toEqual('Invalid password');
+	});
 
 	afterAll(async () => {
 		await disconnectDB();
-	})
-})
+	});
+});
