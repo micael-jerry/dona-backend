@@ -1,12 +1,11 @@
 const { UserModel } = require('../model/user.model');
 
 module.exports.getAll = async () => {
-	const users = await UserModel.find();
-	return users;
+	return await UserModel.find();
 };
 
 module.exports.getById = async id => {
-	const user = await UserModel.findById(id);
+	const user = await UserModel.findById(id, { password: 0});
 	return user;
 };
 

@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.use('/helloworld', helloWorldRouter);
 router.use('/auth', authRouter);
-router.use('/user', userRouter);
+router.use('/users', userRouter);
 
 module.exports.apiRouter = router;
