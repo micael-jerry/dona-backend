@@ -54,13 +54,6 @@ jobs:
         DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
         JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
 
-    - name: Migration DOWN
-      run: npm run migrate:down
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-        JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
-
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4
       with:
