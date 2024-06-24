@@ -10,6 +10,7 @@ module.exports = {
       pseudo: 'user_one',
       email: 'userone@example.com',
       password: passwordOne,
+      role: 'ADMIN',
       bio: 'user one',
     }
     const passwordTwo = await bcrypt.hash('user_two_password', salt);
@@ -18,6 +19,7 @@ module.exports = {
       pseudo: 'user_two',
       email: 'usertwo@example.com',
       password: passwordTwo,
+      role: 'USER',
       bio: 'user one',
     }
     await db.collection('users').insertMany([userOne, userTwo])

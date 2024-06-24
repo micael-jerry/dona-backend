@@ -8,6 +8,7 @@ const {
 	TEST_USER_TWO_ID,
 	TEST_USER_TWO_EMAIL,
 	TEST_USER_TWO_PASSWORD,
+	TEST_USER_TWO_ROLE,
 } = require('./conf/test.utils');
 const { connectDB, disconnectDB } = require('../src/config/db');
 const { StatusCodes } = require('http-status-codes');
@@ -46,7 +47,9 @@ describe(`Test /users`, () => {
 			.expect('Content-Type', /json/)
 			.expect(StatusCodes.OK);
 		expect(res.statusCode).toBe(StatusCodes.OK);
+		expect(res.body._id).toBe(TEST_USER_TWO_ID);
 		expect(res.body.email).toBe(TEST_USER_TWO_EMAIL);
+		expect(res.body.role).toBe(TEST_USER_TWO_ROLE);
 	});
 
 	it('should updated user', async () => {

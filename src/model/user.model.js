@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const { default: isEmail } = require('validator/lib/isEmail');
+const { USER_ROLE } = require('./types/user.role.type');
 
 const userSchema = mongoose.Schema(
 	{
@@ -24,6 +25,11 @@ const userSchema = mongoose.Schema(
 			type: String,
 			required: true,
 			minLength: 6,
+		},
+		role: {
+			type: String,
+			enum: Object.values(USER_ROLE),
+			required: true,
 		},
 		bio: {
 			type: String,
