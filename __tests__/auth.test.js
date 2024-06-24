@@ -20,7 +20,7 @@ describe(`Test login and register`, () => {
 		await connectDB();
 	});
 
-	it('should return token', async () => {
+	it('should return token and role', async () => {
 		const res = await request(app)
 			.post(AUTH_LOGIN_PATH)
 			.send({ email: TEST_USER_ONE_EMAIL, password: TEST_USER_ONE_PASSWORD })
@@ -28,6 +28,7 @@ describe(`Test login and register`, () => {
 			.expect(StatusCodes.OK);
 		expect(res.statusCode).toBe(StatusCodes.OK);
 		expect(res.body.token).not.toBeNull();
+		expect(res.body.role).toEqual('ADMIN');
 	});
 
 	it('should return new user created', async () => {
@@ -40,6 +41,7 @@ describe(`Test login and register`, () => {
 		expect(res.body.email).toEqual(userTestCreate.email);
 		expect(res.body.pseudo).toEqual(userTestCreate.pseudo);
 		expect(res.body.bio).toEqual(userTestCreate.bio);
+		expect(res.body.role).toEqual('USER');
 	});
 
 	it('should return Incorrect email', async () => {

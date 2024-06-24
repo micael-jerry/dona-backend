@@ -17,6 +17,7 @@ module.exports.loginUser = async obj => {
 		if (bcrypt.compareSync(password, foundUser.password)) {
 			return {
 				token: jwt.sign({ user_id: foundUser._id, role: foundUser.role }, process.env.JWT_SECRET_KEY),
+				role: foundUser.role,
 			};
 		}
 		throw new CustomError({
