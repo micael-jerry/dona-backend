@@ -9,6 +9,7 @@ module.exports.himself = async (req, res, next) => {
 				status: StatusCodes.UNAUTHORIZED,
 			}),
 		);
+	} else {
+		next();
 	}
-	next();
 };
