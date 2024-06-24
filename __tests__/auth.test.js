@@ -2,7 +2,7 @@ const { describe, it, expect, beforeAll, afterAll } = require('@jest/globals');
 const request = require('supertest');
 const app = require('../app');
 const { AUTH_LOGIN_PATH, AUTH_SIGNUP_PATH, AUTH_WHOAMI_PATH } = require('./conf/path');
-const { USER_ONE_EMAIL, USER_ONE_PASSWORD } = require('./conf/test.utils');
+const { TEST_USER_ONE_EMAIL, TEST_USER_ONE_PASSWORD } = require('./conf/test.utils');
 const { connectDB, disconnectDB } = require('../src/config/db');
 const { StatusCodes } = require('http-status-codes');
 
@@ -23,7 +23,7 @@ describe(`Test login and register`, () => {
 	it('should return token', async () => {
 		const res = await request(app)
 			.post(AUTH_LOGIN_PATH)
-			.send({ email: USER_ONE_EMAIL, password: USER_ONE_PASSWORD })
+			.send({ email: TEST_USER_ONE_EMAIL, password: TEST_USER_ONE_PASSWORD })
 			.expect('Content-Type', /json/)
 			.expect(StatusCodes.OK);
 		expect(res.statusCode).toBe(StatusCodes.OK);
@@ -55,7 +55,7 @@ describe(`Test login and register`, () => {
 	it('should return Invalid password', async () => {
 		const res = await request(app)
 			.post(AUTH_LOGIN_PATH)
-			.send({ email: USER_ONE_EMAIL, password: 'password' })
+			.send({ email: TEST_USER_ONE_EMAIL, password: 'password' })
 			.expect('Content-Type', /json/)
 			.expect(StatusCodes.UNAUTHORIZED);
 		expect(res.statusCode).toBe(StatusCodes.UNAUTHORIZED);
@@ -65,7 +65,7 @@ describe(`Test login and register`, () => {
 	it('should return logged user information', async () => {
 		const logRes = await request(app)
 			.post(AUTH_LOGIN_PATH)
-			.send({ email: USER_ONE_EMAIL, password: USER_ONE_PASSWORD })
+			.send({ email: TEST_USER_ONE_EMAIL, password: TEST_USER_ONE_PASSWORD })
 			.expect(StatusCodes.OK);
 
 		const res = await request(app)
@@ -74,7 +74,7 @@ describe(`Test login and register`, () => {
 			.expect('Content-Type', /json/)
 			.expect(StatusCodes.OK);
 		expect(res.statusCode).toBe(StatusCodes.OK);
-		expect(res.body.email).toBe(USER_ONE_EMAIL);
+		expect(res.body.email).toBe(TEST_USER_ONE_EMAIL);
 	});
 
 	afterAll(async () => {
