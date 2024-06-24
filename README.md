@@ -75,10 +75,11 @@ npm run dev
 
 ## Endpoints
 
-- **GET /api/users :** Récupère la liste des utilisateurs.
-- **GET /api/users/:id :** Récupère les informations d'un utilisateur spécifique.
 - **POST /api/auth/login :** Se connecter
 - **POST /api/auth/register :** Crée un nouvel utilisateur.
+- **GET /api/auth/whoami :** Savoir qui je suis
+- **GET /api/users :** Récupère la liste des utilisateurs.
+- **GET /api/users/:id :** Récupère les informations d'un utilisateur spécifique.
 - **PUT /api/users/:id :** Met à jour les informations d'un utilisateur.
 
 ## Contributions

@@ -8,6 +8,8 @@
 
 ### Authorization
 
+- Authorization by role
+
 ## Posts
 
 > <https://learn.microsoft.com/fr-fr/azure/cosmos-db/social-media-apps>
