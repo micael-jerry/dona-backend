@@ -31,9 +31,23 @@ const userSchema = mongoose.Schema(
 			enum: Object.values(USER_ROLE),
 			required: true,
 		},
+		lastname: {
+			type: String,
+			required: true,
+			max: 50,
+		},
+		firstname: {
+			type: String,
+			required: true,
+			max: 50,
+		},
 		bio: {
 			type: String,
 			max: 1000,
+		},
+		birthday: {
+			type: Date,
+			required: true,
 		},
 	},
 	{

@@ -5,6 +5,7 @@ const { AUTH_LOGIN_PATH, AUTH_SIGNUP_PATH, AUTH_WHOAMI_PATH } = require('./conf/
 const { connectDB, disconnectDB } = require('../src/config/db');
 const { StatusCodes } = require('http-status-codes');
 const { TEST_USER_ONE } = require('./conf/test.utils');
+const { format } = require('date-fns');
 
 require('dotenv').config();
 
@@ -12,7 +13,10 @@ const userTestCreate = {
 	pseudo: 'user_test_create',
 	email: 'user.test.create@example.com',
 	password: 'userTestCreate',
+	lastname: 'User',
+	firstname: 'Test Create',
 	bio: 'user test create',
+	birthday: new Date('2000-03-03'),
 };
 
 describe(`Test login and register`, () => {
@@ -38,10 +42,25 @@ describe(`Test login and register`, () => {
 			.expect('Content-Type', /json/)
 			.expect(StatusCodes.CREATED);
 		expect(res.statusCode).toBe(StatusCodes.CREATED);
-		expect(res.body.email).toEqual(userTestCreate.email);
-		expect(res.body.pseudo).toEqual(userTestCreate.pseudo);
-		expect(res.body.bio).toEqual(userTestCreate.bio);
-		expect(res.body.role).toEqual('USER');
+		const expected = {
+			pseudo: userTestCreate.pseudo,
+			email: userTestCreate.email,
+			role: 'USER',
+			lastname: userTestCreate.lastname,
+			firstname: userTestCreate.firstname,
+			bio: userTestCreate.bio,
+			birthday: format(userTestCreate.birthday, 'yyyy-MM-dd'),
+		};
+		const result = {
+			pseudo: res.body.pseudo,
+			email: res.body.email,
+			role: res.body.role,
+			lastname: res.body.lastname,
+			firstname: res.body.firstname,
+			bio: res.body.bio,
+			birthday: format(res.body.birthday, 'yyyy-MM-dd'),
+		};
+		expect(result).toEqual(expected);
 	});
 
 	it('should return Incorrect email', async () => {

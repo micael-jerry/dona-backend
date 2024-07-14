@@ -5,6 +5,7 @@ const { AUTH_LOGIN_PATH, USERS_PATH } = require('./conf/path');
 const { connectDB, disconnectDB } = require('../src/config/db');
 const { StatusCodes } = require('http-status-codes');
 const { TEST_USER_ONE, TEST_USER_TWO } = require('./conf/test.utils');
+const { format } = require('date-fns');
 
 require('dotenv').config();
 
@@ -54,11 +55,23 @@ describe(`${USERS_PATH} TESTS`, () => {
 		const res = await request(app)
 			.put(`${USERS_PATH}/${TEST_USER_TWO._id}`)
 			.set({ Authorization: `Bearer ${logRes.body.token}` })
-			.send({ bio: 'new bio' })
+			.send({ lastname: 'new lastname', firstname: 'new firstname', bio: 'new bio', birthday: new Date('2001-01-01') })
 			.expect('Content-Type', /json/)
 			.expect(StatusCodes.OK);
 		expect(res.statusCode).toBe(StatusCodes.OK);
-		expect(res.body.bio).toEqual('new bio');
+		const expected = {
+			lastname: 'new lastname',
+			firstname: 'new firstname',
+			bio: 'new bio',
+			birthday: format(new Date('2001-01-01'), 'yyyy-MM-dd'),
+		};
+		const result = {
+			lastname: res.body.lastname,
+			firstname: res.body.firstname,
+			bio: res.body.bio,
+			birthday: format(res.body.birthday, 'yyyy-MM-dd'),
+		};
+		expect(result).toEqual(expected);
 	});
 
 	it(`PUT ${USERS_PATH}/user_id should return Unauthorized`, async () => {

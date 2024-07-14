@@ -6,7 +6,12 @@ const signUpValidatorSchema = Joi.object({
 	pseudo: Joi.string().min(3).max(50).required(),
 	email: Joi.string().email().required(),
 	password: Joi.string().min(6).required(),
+	lastname: Joi.string().max(50).required(),
+	firstname: Joi.string().max(50).required(),
 	bio: Joi.string().max(1000),
+	birthday: Joi.date()
+		.less(new Date().setFullYear(new Date().getFullYear() - 18))
+		.required(),
 });
 
 const loginValidatorSchema = Joi.object({

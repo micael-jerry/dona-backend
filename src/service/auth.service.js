@@ -6,8 +6,9 @@ const { CustomError } = require('../error/error.custom.model');
 const { USER_ROLE } = require('../model/types/user.role.type');
 
 module.exports.createUser = async obj => {
-	const { pseudo, email, password, bio } = obj;
-	return await UserModel.create({ pseudo, email, password, bio, role: USER_ROLE.USER });
+	console.log(obj);
+	const { pseudo, email, password, lastname, firstname, bio, birthday } = obj;
+	return await UserModel.create({ pseudo, email, password, lastname, firstname, bio, birthday, role: USER_ROLE.USER });
 };
 
 module.exports.loginUser = async obj => {
