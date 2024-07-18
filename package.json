@@ -10,7 +10,7 @@
 		"migrate:down": "migrate-mongo down",
 		"test": "cross-env NODE_ENV=test jest --coverage",
 		"test:detectOpenHandles": "cross-env NODE_ENV=test jest --detectOpenHandles",
-		"prettify": "prettier --write 'src/**/*.js' '__tests__/**/*.js'",
+		"prettify": "prettier --write 'src/**/*.js' '__tests__/**/*.js' 'migrations/**/*.js'",
 		"check": "eslint src/**/*"
 	},
 	"keywords": [],

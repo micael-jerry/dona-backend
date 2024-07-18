@@ -8,7 +8,7 @@ const LocationSchema = mongoose.Schema({
 		required: true,
 	},
 	coordinates: {
-		type: [Number],
+		type: [Number], // [x, y] | [longitude, latitude]
 		required: true,
 	},
 });
@@ -37,5 +37,7 @@ const ReportSchema = mongoose.Schema(
 		timestamps: true,
 	},
 );
+
+ReportSchema.index('2dsphere');
 
 module.exports.ReportModel = mongoose.model('report', ReportSchema);
