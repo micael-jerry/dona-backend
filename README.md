@@ -1,4 +1,4 @@
-# My social media - backend
+# Dona - backend
 
 [![Continuous Integration](https://github.com/SignCraft2024/signcraft/actions/workflows/CI.yml/badge.svg)](https://github.com/micael-jerry/my-social-media-backend/blob/dev/.github/workflows/ci.yml)
 
@@ -6,49 +6,48 @@
 
 ## Description
 
-Bienvenue dans my-social-media-backend ! Il s'agit d'une API RESTful développée pour alimenter un réseau social. Cette API offre des fonctionnalités essentielles pour la gestion des utilisateurs, des publications, des commentaires, etc.
+This project is a React application and an Express API inspired by Waze. It allows users to report police positions and potentially other incidents on a map using Leaflet. Users can sign up, view reports on the map, and report incidents themselves.
 
-## Fonctionnalités Principales
+## Features
 
-- **Gestion des Utilisateurs :** Création, mise à jour, suppression et récupération des informations des utilisateurs.
-- **Publications :** Création, modification, suppression et récupération des publications.
-- **Commentaires :** Possibilité de commenter les publications.
+- User registration and authentication
+- Report police positions and other incidents
+- View reports on an interactive map
+- Add comments and votes to reports
 
-## Technologies Utilisées
+## Technologies Used
 
-- **Express.js :** Un framework web minimaliste pour Node.js, idéal pour la création d'API RESTful.
-- **MongoDB :** Une base de données NoSQL utilisée pour stocker les informations de manière flexible.
+- Express
+- Node
+- MongoDB
 
-## Prérequis
+## Getting started
 
-Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur votre machine :
+### Prerequisites
+
+Before you start, please ensure that you have the following items installed on your machine:
 
 - [Node.js](https://nodejs.org/)
 - [MongoDB](https://www.mongodb.com/)
 
-## Installation
+### Installation
 
-### 1. Clonez le dépôt
+#### 1. Clone the repository
 
 ```bash
 git clone git@github.com:micael-jerry/my-social-media-backend.git
 ```
 
-### 2. Accédez au répertoire du projet
+#### 2. Install dependencies for the backend
 
 ```bash
 cd my-social-media-backend
-```
-
-### 3. Installez les dépendances
-
-```bash
 npm install
 ```
 
-## Configuration
+#### 3. Configuration
 
-1. Créez un fichier `.env` à la racine du projet et configurez les variables d'environnement nécessaires:
+Create a `.env` file at the root of the project and configure the necessary environment variables:
 
 ```bash
 PORT= <port>
@@ -57,39 +56,22 @@ DATABASE_NAME= <name>
 JWT_SECRET_KEY= <key>
 ```
 
-## Démarrage
+### Start
 
-### 1. Lancez l'application
+#### 1. Launch application
 
 ```bash
 npm start
 ```
 
-### 2. Lancez l'application en mode developpement
+#### 2. Launch the application in development mode
 
 ```bash
 npm run dev
 ```
 
-> L'API sera accessible à l'adresse : `http://localhost:8080` (ou tout autre port que vous avez configuré)
-
-## Endpoints
-
-- **POST /api/auth/login :** Se connecter
-- **POST /api/auth/register :** Crée un nouvel utilisateur.
-- **GET /api/auth/whoami :** Savoir qui je suis
-- **GET /api/users :** Récupère la liste des utilisateurs.
-- **GET /api/users/:id :** Récupère les informations d'un utilisateur spécifique.
-- **PUT /api/users/:id :** Met à jour les informations d'un utilisateur.
-
-## Contributions
-
-Les contributions sont les bienvenues ! Avant de contribuer, assurez-vous de discuter des modifications que vous souhaitez apporter.
+> The API will be accessible at: `http://localhost:8080` (or any other port you have configured)
 
 ## Auteurs
 
 - [@micael-jerry](https://github.com/micael-jerry)
-
-## Licence
-
-Ce projet est sous licence [MIT](LICENSE).
