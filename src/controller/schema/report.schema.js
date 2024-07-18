@@ -1,6 +1,5 @@
 const yup = require('yup');
 const { REPORT_TYPE, LOCATION_TYPE } = require('../../model/types/report.type');
-const { validateRequest } = require('./request.body.validator');
 
 const reportLocationValidatorSchema = yup.object().shape({
 	type: yup.string().oneOf(Object.values(LOCATION_TYPE)).required(),
@@ -14,4 +13,4 @@ const reportValidatorSchema = yup.object().shape({
 	reportedBy: yup.string().required(),
 });
 
-module.exports.reportBodyValidator = validateRequest(reportValidatorSchema);
+module.exports.reportValidatorSchema = reportValidatorSchema;

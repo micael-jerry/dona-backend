@@ -45,6 +45,6 @@ describe(`${REPORTS_PATH} TESTS`, () => {
 	});
 
 	afterAll(async () => {
-		disconnectDB();
+		await disconnectDB();
 	});
 });

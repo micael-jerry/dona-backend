@@ -1,5 +1,4 @@
 const yup = require('yup');
-const { validateRequest } = require('./request.body.validator');
 
 const updateUserSchemaValidator = yup.object().shape({
 	lastname: yup.string().max(50),
@@ -8,4 +7,4 @@ const updateUserSchemaValidator = yup.object().shape({
 	birthday: yup.date().max(new Date(new Date().setFullYear(new Date().getFullYear() - 18))),
 });
 
-module.exports.updateUserValidator = validateRequest(updateUserSchemaValidator);
+module.exports.updateUserSchemaValidator = updateUserSchemaValidator;

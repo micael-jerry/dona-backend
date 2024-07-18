@@ -1,5 +1,4 @@
 const yup = require('yup');
-const { validateRequest } = require('./request.body.validator');
 
 const signUpValidatorSchema = yup.object().shape({
 	pseudo: yup.string().min(3).max(50).required(),
@@ -19,5 +18,5 @@ const loginValidatorSchema = yup.object().shape({
 	password: yup.string().min(6).required(),
 });
 
-module.exports.signUpBodyValidator = validateRequest(signUpValidatorSchema);
-module.exports.loginBodyValidator = validateRequest(loginValidatorSchema);
+module.exports.signUpValidatorSchema = signUpValidatorSchema;
+module.exports.loginValidatorSchema = loginValidatorSchema;
