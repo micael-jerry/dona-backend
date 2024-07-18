@@ -1,18 +1,6 @@
 const mongoose = require('mongoose');
 const { REPORT_TYPE, LOCATION_TYPE } = require('./types/report.type');
 
-const LocationSchema = mongoose.Schema({
-	type: {
-		type: String,
-		enum: Object.values(LOCATION_TYPE),
-		required: true,
-	},
-	coordinates: {
-		type: [Number], // [x, y] | [longitude, latitude]
-		required: true,
-	},
-});
-
 const ReportSchema = mongoose.Schema(
 	{
 		type: {
@@ -21,8 +9,15 @@ const ReportSchema = mongoose.Schema(
 			required: true,
 		},
 		location: {
-			type: LocationSchema,
-			required: true,
+			type: {
+				type: String,
+				enum: Object.values(LOCATION_TYPE),
+				required: true,
+			},
+			coordinates: {
+				type: [Number], // [x, y] | [longitude, latitude]
+				required: true,
+			},
 		},
 		description: {
 			type: String,

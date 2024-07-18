@@ -1,5 +1,5 @@
-const app = require('../app')
-const request = require('supertest')
+const app = require('../app');
+const request = require('supertest');
 const { describe, it, expect, beforeAll, afterAll } = require('@jest/globals');
 const { REPORTS_PATH, AUTH_LOGIN_PATH } = require('./conf/path');
 const { connectDB, disconnectDB } = require('../src/config/db');
@@ -12,7 +12,7 @@ require('dotenv').config();
 describe(`${REPORTS_PATH} TESTS`, () => {
 	beforeAll(async () => {
 		await connectDB();
-	})
+	});
 
 	it(`GET ${REPORTS_PATH} should return reports list`, async () => {
 		const logRes = await request(app)
@@ -27,7 +27,7 @@ describe(`${REPORTS_PATH} TESTS`, () => {
 			.expect(StatusCodes.OK);
 		expect(res.statusCode).toBe(StatusCodes.OK);
 		expect(res.body.length >= 5).toBe(true);
-	})
+	});
 
 	it(`GET ${REPORTS_PATH}/:report_id should return reports list`, async () => {
 		const logRes = await request(app)
@@ -42,9 +42,9 @@ describe(`${REPORTS_PATH} TESTS`, () => {
 			.expect(StatusCodes.OK);
 		expect(res.statusCode).toBe(StatusCodes.OK);
 		expect(res.body).toEqual(TEST_REPORT_ONE);
-	})
+	});
 
 	afterAll(async () => {
 		disconnectDB();
-	})
-})
+	});
+});
