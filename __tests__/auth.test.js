@@ -4,7 +4,7 @@ const app = require('../app');
 const { AUTH_LOGIN_PATH, AUTH_SIGNUP_PATH, AUTH_WHOAMI_PATH } = require('./conf/path');
 const { connectDB, disconnectDB } = require('../src/config/db');
 const { StatusCodes } = require('http-status-codes');
-const { TEST_USER_ONE } = require('./conf/test.utils');
+const { TEST_USER_ONE } = require('./conf/utils/test.utils.user');
 const { format } = require('date-fns');
 
 require('dotenv').config();

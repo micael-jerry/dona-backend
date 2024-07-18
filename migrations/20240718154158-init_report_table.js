@@ -61,6 +61,7 @@ module.exports = {
 	},
 
 	async down(db) {
+		await db.collection('reports').drop();
 		await db.collection('users').drop();
 	},
 };
