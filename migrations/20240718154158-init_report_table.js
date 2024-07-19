@@ -11,6 +11,7 @@ module.exports = {
 			},
 			description: 'Police spotted near Analakely.',
 			reportedBy: new mongoose.Types.ObjectId('6677d90a45d1db9a3bd0ac8a'), // ID of userOne
+			createdAt: new Date(),
 		};
 
 		const reportTwo = {
@@ -22,6 +23,7 @@ module.exports = {
 			},
 			description: 'Police spotted near Ankorondrano.',
 			reportedBy: new mongoose.Types.ObjectId('6677d94645d1db9a3bd0ac8d'), // ID of userTwo
+			createdAt: new Date(),
 		};
 
 		const reportThree = {
@@ -33,6 +35,7 @@ module.exports = {
 			},
 			description: 'Police spotted near Andravoahangy.',
 			reportedBy: new mongoose.Types.ObjectId('6677d90a45d1db9a3bd0ac8a'), // ID of userOne
+			createdAt: new Date(),
 		};
 
 		const reportFour = {
@@ -44,6 +47,7 @@ module.exports = {
 			},
 			description: 'Police spotted near Anosy.',
 			reportedBy: new mongoose.Types.ObjectId('6677d94645d1db9a3bd0ac8d'), // ID of userTwo
+			createdAt: new Date(),
 		};
 
 		const reportFive = {
@@ -55,6 +59,7 @@ module.exports = {
 			},
 			description: 'Police spotted near Ambohijatovo.',
 			reportedBy: new mongoose.Types.ObjectId('6677d90a45d1db9a3bd0ac8a'), // ID of userOne
+			createdAt: new Date(),
 		};
 
 		await db.collection('reports').insertMany([reportOne, reportTwo, reportThree, reportFour, reportFive]);

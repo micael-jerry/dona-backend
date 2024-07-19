@@ -41,6 +41,9 @@ describe(`${REPORTS_PATH} TESTS`, () => {
 			.expect('Content-Type', /json/)
 			.expect(StatusCodes.OK);
 		expect(res.statusCode).toBe(StatusCodes.OK);
+
+		res.body.createdAt = undefined;
+
 		expect(res.body).toEqual(TEST_REPORT_ONE);
 	});
 

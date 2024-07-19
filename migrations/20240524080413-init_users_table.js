@@ -15,6 +15,7 @@ module.exports = {
 			firstname: 'One',
 			bio: 'user one',
 			birthday: new Date('2000-01-01'),
+			createdAt: new Date(),
 		};
 		const passwordTwo = await bcrypt.hash('user_two_password', salt);
 		const userTwo = {
@@ -27,6 +28,7 @@ module.exports = {
 			firstname: 'Two',
 			bio: 'user two',
 			birthday: new Date('2000-02-02'),
+			createdAt: new Date(),
 		};
 		await db.collection('users').insertMany([userOne, userTwo]);
 	},
