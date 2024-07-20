@@ -4,6 +4,9 @@ const { StatusCodes } = require('http-status-codes');
 const { CustomError } = require('../../error/error.custom.model');
 const { USER_ROLE } = require('../../model/types/user.role.type');
 
+/**
+ * Checks token validity and adds a user: {user_id, role} object to the req
+ */
 module.exports.authentication = (req, res, next) => {
 	const bearerToken = req.headers.authorization;
 	try {

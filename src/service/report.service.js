@@ -7,3 +7,7 @@ module.exports.getAll = async () => {
 module.exports.getById = async id => {
 	return ReportModel.findById(id);
 };
+
+module.exports.save = async (userId, { type, location, description }) => {
+	return await ReportModel.create({ type, location, description, reportedBy: userId });
+};
