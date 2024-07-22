@@ -72,8 +72,8 @@ describe(`${REPORTS_PATH} TESTS`, () => {
 		const expected = {
 			...reportTestCreate,
 			reportedBy: TEST_USER_ONE._id,
-			__v: res.body.__v,
 			_id: res.body._id,
+			__v: res.body.__v,
 			createdAt: res.body.createdAt,
 			updatedAt: res.body.updatedAt,
 		};

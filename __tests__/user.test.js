@@ -5,7 +5,7 @@ const { AUTH_LOGIN_PATH, USERS_PATH } = require('./conf/path');
 const { connectDB, disconnectDB } = require('../src/config/db');
 const { StatusCodes } = require('http-status-codes');
 const { TEST_USER_ONE, TEST_USER_TWO } = require('./conf/utils/test.utils.user');
-const { format } = require('date-fns');
+const dayjs = require('dayjs');
 
 require('dotenv').config();
 
@@ -63,13 +63,13 @@ describe(`${USERS_PATH} TESTS`, () => {
 			lastname: 'new lastname',
 			firstname: 'new firstname',
 			bio: 'new bio',
-			birthday: format(new Date('2001-01-01'), 'yyyy-MM-dd'),
+			birthday: dayjs('2001-01-01').format('YYYY-MM-DD'),
 		};
 		const result = {
 			lastname: res.body.lastname,
 			firstname: res.body.firstname,
 			bio: res.body.bio,
-			birthday: format(res.body.birthday, 'yyyy-MM-dd'),
+			birthday: dayjs(res.body.birthday).format('YYYY-MM-DD'),
 		};
 		expect(result).toEqual(expected);
 	});
