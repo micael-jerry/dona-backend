@@ -8,6 +8,8 @@
 
 This project is a React application and an Express API inspired by Waze. It allows users to report police positions and potentially other incidents on a map using Leaflet. Users can sign up, view reports on the map, and report incidents themselves.
 
+### [Front-End link](https://github.com/micael-jerry/dona-frontend)
+
 ## Features
 
 - User registration and authentication
@@ -35,13 +37,13 @@ Before you start, please ensure that you have the following items installed on y
 #### 1. Clone the repository
 
 ```bash
-git clone git@github.com:micael-jerry/my-social-media-backend.git
+git clone git@github.com:micael-jerry/dona-backend.git
 ```
 
 #### 2. Install dependencies for the backend
 
 ```bash
-cd my-social-media-backend
+cd dona-backend
 npm install
 ```
 
@@ -72,6 +74,6 @@ npm run dev
 
 > The API will be accessible at: `http://localhost:8080` (or any other port you have configured)
 
-## Auteurs
+## Author
 
 - [@micael-jerry](https://github.com/micael-jerry)
